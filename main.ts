@@ -2,7 +2,77 @@ namespace SpriteKind {
     export const Coin = SpriteKind.create()
     export const Flower = SpriteKind.create()
     export const Fireball = SpriteKind.create()
+    export const Trigger = SpriteKind.create()
+    export const NoteD = SpriteKind.create()
+    export const NoteE = SpriteKind.create()
+    export const NoteF = SpriteKind.create()
+    export const coinBox = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+    music.stopAllSounds()
+    music.siren.play()
+    bee = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    animation.runImageAnimation(
+    bee,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . . . 1 1 1 1 1 . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `],
+    100,
+    true
+    )
+    bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
+    bee.follow(Hops_and_Paw, 30)
+    Hops_and_Paw.sayText("\"Wrong Interval!\"", 200, true)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy()
@@ -12,8 +82,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         Hops_and_Paw.vy = -150
     }
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.brick, function (sprite, location) {
+    music.stopAllSounds()
+    music.baDing.play()
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile3`, function (sprite, location) {
     game.over(false, effects.melt)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteE, function (sprite, otherSprite) {
+    music.playTone(330, music.beat(BeatFraction.Whole))
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile2`, function (sprite, location) {
     current_level += 1
@@ -82,9 +159,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Flower, function (sprite, otherS
     bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
     bee.follow(Hops_and_Paw, 30)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteF, function (sprite, otherSprite) {
+    music.playTone(349, music.beat(BeatFraction.Whole))
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Fireball, function (sprite, otherSprite) {
     info.changeLifeBy(-2)
     otherSprite.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteD, function (sprite, otherSprite) {
+    music.playTone(294, music.beat(BeatFraction.Whole))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Trigger, function (sprite, otherSprite) {
+    music.playTone(262, music.beat(BeatFraction.Whole))
+    game.showLongText("\"Which note represents a Major 2nd?\"", DialogLayout.Bottom)
 })
 function startLevel () {
     if (current_level == 0) {
@@ -93,6 +180,8 @@ function startLevel () {
         tiles.setTilemap(tilemap`level3`)
     } else if (current_level == 2) {
         tiles.setTilemap(tilemap`level4`)
+    } else if (current_level == 3) {
+        tiles.setTilemap(tilemap`level2`)
     } else {
         game.over(true)
     }
@@ -314,6 +403,28 @@ function startLevel () {
         tiles.placeOnTile(flower, value)
         tiles.setTileAt(value, assets.tile`tile0`)
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            b b b b b b b b b b b b b b b b 
+            b b b b b b b b b b b b b b b b 
+            b b b b b b b b b b b b b b b b 
+            `, SpriteKind.Trigger)
+        tiles.placeOnTile(trigger, value)
+        tiles.setTileAt(value, assets.tile`tile0`)
+    }
     for (let value of tiles.getTilesByType(assets.tile`tile11`)) {
         fireball = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -343,6 +454,72 @@ function startLevel () {
         )
         fireball.startEffect(effects.fire)
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            c c c c c c c c c c c c c c c c 
+            c c c c c c c c c c c c c c c c 
+            c c c c c c c c c c c c c c c c 
+            `, SpriteKind.NoteD)
+        tiles.placeOnTile(trigger, value)
+        tiles.setTileAt(value, assets.tile`tile0`)
+    }
+    for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+            7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+            7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+            `, SpriteKind.NoteE)
+        tiles.placeOnTile(trigger, value)
+        tiles.setTileAt(value, assets.tile`tile0`)
+    }
+    for (let value of tiles.getTilesByType(assets.tile`myTile2`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+            9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+            9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+            `, SpriteKind.NoteF)
+        tiles.placeOnTile(trigger, value)
+        tiles.setTileAt(value, assets.tile`tile0`)
+    }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -353,6 +530,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
 })
 let fireball: Sprite = null
+let trigger: Sprite = null
 let flower: Sprite = null
 let bee: Sprite = null
 let Hops_and_Paw: Sprite = null
