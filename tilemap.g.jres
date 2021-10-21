@@ -180,6 +180,12 @@
         "tilemapTile": true,
         "displayName": "myTile6"
     },
+    "tile33": {
+        "data": "hwQQABAAAADeHd0d3R3dHRER3R0REd0d3R3dHd0d3R3dVd0d3R3dHd1V3R3dHd0d3VUREd0dERHdVd0d3R3dHd1V3V1VVV0V3VXdXVVVXRURVd1dFRHdHd1V3V3VHd0d3VVVVdUd3R3dVVVV1R3dHd0dERHdHRER3R3dHd0d3R3eHd0d3R3d7Q==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile10"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",
@@ -275,7 +281,7 @@
             "myTiles.tile28",
             "myTiles.tile30",
             "myTiles.tile29",
-            "myTiles.tile32"
+            "myTiles.tile33"
         ],
         "displayName": "level2"
     },
