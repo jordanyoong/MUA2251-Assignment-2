@@ -7,13 +7,71 @@ namespace SpriteKind {
     export const NoteE = SpriteKind.create()
     export const NoteF = SpriteKind.create()
     export const coinBox = SpriteKind.create()
-    export const noteG = SpriteKind.create()
-    export const noteA = SpriteKind.create()
-    export const noteB = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
     music.stopAllSounds()
-    music.baDing.play()
+    music.siren.play()
+    bee = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    animation.runImageAnimation(
+    bee,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . . . 1 1 1 1 1 . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `],
+    100,
+    true
+    )
+    bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
+    bee.follow(Hops_and_Paw, 30)
+    Hops_and_Paw.sayText("\"Wrong Interval!\"", 200, true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -23,6 +81,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Hops_and_Paw.vy == 0) {
         Hops_and_Paw.vy = -150
     }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.brick, function (sprite, location) {
+    music.stopAllSounds()
+    music.baDing.play()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile3`, function (sprite, location) {
     game.over(false, effects.melt)
@@ -415,9 +477,6 @@ function initLevels () {
         tiles.setTileAt(value11, assets.tile`tile0`)
     }
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteG, function (sprite, otherSprite) {
-    music.playTone(392, music.beat(BeatFraction.Whole))
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteE, function (sprite, otherSprite) {
     music.playTone(330, music.beat(BeatFraction.Whole))
 })
@@ -425,8 +484,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile2`, function (sprite, loc
     current_level += 1
     startLevel()
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteB, function (sprite, otherSprite) {
-    music.playTone(494, music.beat(BeatFraction.Whole))
+sprites.onOverlap(SpriteKind.Player, SpriteKind.noteA, function (sprite, otherSprite) {
+    music.playTone(440, music.beat(BeatFraction.Whole))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Flower, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -498,80 +557,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Fireball, function (sprite, othe
     info.changeLifeBy(-2)
     otherSprite.destroy()
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteA, function (sprite, otherSprite) {
-    music.playTone(440, music.beat(BeatFraction.Whole))
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteD, function (sprite, otherSprite) {
     music.playTone(294, music.beat(BeatFraction.Whole))
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
-    music.stopAllSounds()
-    music.siren.play()
-    bee = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
-    animation.runImageAnimation(
-    bee,
-    [img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . . . 1 1 1 1 1 . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `],
-    100,
-    true
-    )
-    bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
-    bee.follow(Hops_and_Paw, 30)
-    Hops_and_Paw.sayText("\"Wrong Interval!\"", 200, true)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Trigger, function (sprite, otherSprite) {
     music.playTone(262, music.beat(BeatFraction.Whole))
-    Hops_and_Paw.sayText("Placeholder Text", 2000, true)
+    Hops_and_Paw.sayText("\"Which note represents a Major 2nd?\"", 2000, true)
 })
 function startLevel () {
     if (current_level == 0) {
@@ -856,10 +847,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         info.changeLifeBy(-1)
     }
 })
-let bee: Sprite = null
 let fireball: Sprite = null
 let trigger: Sprite = null
 let flower: Sprite = null
+let bee: Sprite = null
 let Hops_and_Paw: Sprite = null
 let current_level = 0
 scene.setBackgroundColor(9)
