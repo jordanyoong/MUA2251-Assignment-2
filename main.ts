@@ -437,16 +437,16 @@ function startLevel () {
     }
     scene.cameraFollowSprite(Hops_and_Paw)
     info.setLife(5)
-    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
-        value.destroy()
+    for (let value2 of sprites.allOfKind(SpriteKind.Enemy)) {
+        value2.destroy()
     }
-    for (let value of sprites.allOfKind(SpriteKind.Coin)) {
-        value.destroy()
+    for (let value3 of sprites.allOfKind(SpriteKind.Coin)) {
+        value3.destroy()
     }
-    for (let value of sprites.allOfKind(SpriteKind.Flower)) {
-        value.destroy()
+    for (let value4 of sprites.allOfKind(SpriteKind.Flower)) {
+        value4.destroy()
     }
-    for (let value of tiles.getTilesByType(assets.tile`tile4`)) {
+    for (let value5 of tiles.getTilesByType(assets.tile`tile4`)) {
         flower = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -624,10 +624,10 @@ function startLevel () {
         100,
         true
         )
-        tiles.placeOnTile(flower, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(flower, value5)
+        tiles.setTileAt(value5, assets.tile`tile0`)
     }
-    for (let value of tiles.getTilesByType(assets.tile`tile5`)) {
+    for (let value6 of tiles.getTilesByType(assets.tile`tile5`)) {
         flower = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -646,10 +646,10 @@ function startLevel () {
             . . . . . 8 7 7 8 . . . . . . . 
             . . . . . . 7 8 . . . . . . . . 
             `, SpriteKind.Flower)
-        tiles.placeOnTile(flower, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(flower, value6)
+        tiles.setTileAt(value6, assets.tile`tile0`)
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile`)) {
+    for (let value7 of tiles.getTilesByType(assets.tile`myTile`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -668,10 +668,10 @@ function startLevel () {
             b b b b b b b b b b b b b b b b 
             b b b b b b b b b b b b b b b b 
             `, SpriteKind.Trigger)
-        tiles.placeOnTile(trigger, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, value7)
+        tiles.setTileAt(value7, assets.tile`tile0`)
     }
-    for (let value of tiles.getTilesByType(assets.tile`tile11`)) {
+    for (let value8 of tiles.getTilesByType(assets.tile`tile11`)) {
         fireball = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -690,8 +690,8 @@ function startLevel () {
             . . . . . . . . . . . . . 5 . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Fireball)
-        tiles.placeOnTile(fireball, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(fireball, value8)
+        tiles.setTileAt(value8, assets.tile`tile0`)
         animation.runMovementAnimation(
         fireball,
         "c 0 -100 0 100 0 0",
@@ -700,7 +700,7 @@ function startLevel () {
         )
         fireball.startEffect(effects.fire)
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
+    for (let value9 of tiles.getTilesByType(assets.tile`myTile0`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -719,10 +719,10 @@ function startLevel () {
             c c c c c c c c c c c c c c c c 
             c c c c c c c c c c c c c c c c 
             `, SpriteKind.NoteD)
-        tiles.placeOnTile(trigger, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, value9)
+        tiles.setTileAt(value9, assets.tile`tile0`)
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+    for (let value10 of tiles.getTilesByType(assets.tile`myTile3`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -741,10 +741,10 @@ function startLevel () {
             7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
             7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
             `, SpriteKind.NoteE)
-        tiles.placeOnTile(trigger, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, value10)
+        tiles.setTileAt(value10, assets.tile`tile0`)
     }
-    for (let value of tiles.getTilesByType(assets.tile`myTile2`)) {
+    for (let value11 of tiles.getTilesByType(assets.tile`myTile2`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -763,8 +763,8 @@ function startLevel () {
             9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
             9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
             `, SpriteKind.NoteF)
-        tiles.placeOnTile(trigger, value)
-        tiles.setTileAt(value, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, value11)
+        tiles.setTileAt(value11, assets.tile`tile0`)
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
