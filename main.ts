@@ -6,26 +6,253 @@ namespace SpriteKind {
     export const NoteD = SpriteKind.create()
     export const NoteE = SpriteKind.create()
     export const NoteF = SpriteKind.create()
-    export const coinBox = SpriteKind.create()
-    export const noteG = SpriteKind.create()
-    export const noteA = SpriteKind.create()
-    export const noteB = SpriteKind.create()
+    export const CoinBox = SpriteKind.create()
+    export const NoteG = SpriteKind.create()
+    export const NoteA = SpriteKind.create()
+    export const NoteB = SpriteKind.create()
+    export const Prompt = SpriteKind.create()
+    export const EndPrompt = SpriteKind.create()
+    export const blockade = SpriteKind.create()
+    export const text2 = SpriteKind.create()
+    export const text1 = SpriteKind.create()
+    export const text3 = SpriteKind.create()
+    export const text4 = SpriteKind.create()
+    export const text5 = SpriteKind.create()
+    export const text6 = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteB, function (sprite, otherSprite) {
     music.stopAllSounds()
-    music.baDing.play()
+    music.playTone(494, music.beat(BeatFraction.Breve))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text4, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Perfect 5th?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text1, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Major 2nd?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Hops_and_Paw.vy == 0) {
         Hops_and_Paw.vy = -150
     }
 })
+function initTexts () {
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile14`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+            . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+            . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+            `, SpriteKind.text1)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile15`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . c c c c c c c c c c c c c c . 
+            . c c c c c c c c c c c c c c . 
+            . c c c c c c c c c c c c c c . 
+            `, SpriteKind.text2)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile16`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . a a a a a a a a a a a a a a . 
+            . a a a a a a a a a a a a a a . 
+            . a a a a a a a a a a a a a a . 
+            `, SpriteKind.text3)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile17`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . b b b b b b b b b b b b b b . 
+            . b b b b b b b b b b b b b b . 
+            . b b b b b b b b b b b b b b . 
+            `, SpriteKind.text4)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile18`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
+            . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
+            . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
+            `, SpriteKind.text5)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+    for (let t1 of tiles.getTilesByType(assets.tile`myTile19`)) {
+        trigger = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
+            . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
+            . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
+            `, SpriteKind.text6)
+        tiles.placeOnTile(trigger, t1)
+        tiles.setTileAt(t1, assets.tile`tile0`)
+    }
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text6, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Major 7th?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile3`, function (sprite, location) {
     game.over(false, effects.melt)
+})
+function wrongNote () {
+    music.stopAllSounds()
+    music.siren.play()
+    bee = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    animation.runImageAnimation(
+    bee,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . f 1 1 1 f 1 1 1 f . . . . 
+        . . . . . 1 1 1 1 1 . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . f f 5 5 f 5 5 f f . . . . 
+        . . . f 5 5 5 f 5 5 5 f . . . . 
+        . . . . f f f f f f f . . . . . 
+        `],
+    5000,
+    true
+    )
+    bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
+    bee.follow(Hops_and_Paw, 30)
+    Hops_and_Paw.sayText("\"Wrong Interval!\"", 500, false)
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteA, function (sprite, otherSprite) {
+    music.stopAllSounds()
+    music.playTone(440, music.beat(BeatFraction.Breve))
 })
 function initLevels () {
     for (let value5 of tiles.getTilesByType(assets.tile`tile4`)) {
@@ -348,7 +575,7 @@ function initLevels () {
         tiles.placeOnTile(trigger, value11)
         tiles.setTileAt(value11, assets.tile`tile0`)
     }
-    for (let value11 of tiles.getTilesByType(assets.tile`myTile7`)) {
+    for (let value12 of tiles.getTilesByType(assets.tile`myTile7`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -366,11 +593,11 @@ function initLevels () {
             2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
             2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
             2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-            `, SpriteKind.noteG)
-        tiles.placeOnTile(trigger, value11)
-        tiles.setTileAt(value11, assets.tile`tile0`)
+            `, SpriteKind.NoteG)
+        tiles.placeOnTile(trigger, value12)
+        tiles.setTileAt(value12, assets.tile`tile0`)
     }
-    for (let value11 of tiles.getTilesByType(assets.tile`myTile5`)) {
+    for (let value13 of tiles.getTilesByType(assets.tile`myTile5`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -388,11 +615,11 @@ function initLevels () {
             e e e e e e e e e e e e e e e e 
             e e e e e e e e e e e e e e e e 
             e e e e e e e e e e e e e e e e 
-            `, SpriteKind.noteA)
-        tiles.placeOnTile(trigger, value11)
-        tiles.setTileAt(value11, assets.tile`tile0`)
+            `, SpriteKind.NoteA)
+        tiles.placeOnTile(trigger, value13)
+        tiles.setTileAt(value13, assets.tile`tile0`)
     }
-    for (let value11 of tiles.getTilesByType(assets.tile`myTile4`)) {
+    for (let value14 of tiles.getTilesByType(assets.tile`myTile4`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -410,23 +637,183 @@ function initLevels () {
             3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
             3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
             3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            `, SpriteKind.noteB)
-        tiles.placeOnTile(trigger, value11)
-        tiles.setTileAt(value11, assets.tile`tile0`)
+            `, SpriteKind.NoteB)
+        tiles.placeOnTile(trigger, value14)
+        tiles.setTileAt(value14, assets.tile`tile0`)
     }
+    for (let value15 of tiles.getTilesByType(assets.tile`myTile11`)) {
+        trigger = sprites.create(img`
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            ................
+            .....88.........
+            .....868........
+            ......868.......
+            .......868......
+            .......866......
+            .......8676.....
+            ......67656.....
+            .....656758.....
+            ....65775868....
+            ....65656868....
+            ....87678868....
+            ....87678668....
+            ....87677668....
+            ....8776768.....
+            .....87678......
+            ......8768......
+            `, SpriteKind.Prompt)
+        tiles.placeOnTile(trigger, value15)
+        tiles.setTileAt(value15, assets.tile`tile0`)
+    }
+    for (let value16 of tiles.getTilesByType(assets.tile`myTile12`)) {
+        trigger = sprites.create(img`
+            ....................
+            ....................
+            ....................
+            ....................
+            ....................
+            ....................
+            ....................
+            ....................
+            .......d.d.d........
+            ........ddd.........
+            .......dd5dd........
+            ........ddd.........
+            ......7d.d.d........
+            ......77.6..77......
+            .......777.77.......
+            .........7776.......
+            .........776........
+            .........76.........
+            ....................
+            ....................
+            `, SpriteKind.EndPrompt)
+        tiles.placeOnTile(trigger, value16)
+        tiles.setTileAt(value16, assets.tile`tile0`)
+    }
+    for (let value17 of tiles.getTilesByType(assets.tile`myTile13`)) {
+        trigger = sprites.create(img`
+            ........................
+            ........................
+            ..........bbbb..........
+            ........bbddddbb........
+            .......bddbbbbddb.......
+            ......bdbbddddbbdb......
+            .....bdbbdbbbbdbbdb.....
+            .....bdbdbddddbdbdb.....
+            .....cdbbdbbbbdbbdc.....
+            .....cbdbbddddbbdbc.....
+            .....efbddbbbbddbce.....
+            .....eeffbddddbccee.....
+            .....eeeeffcccceee......
+            .....ceeeeeeeeeeee......
+            .....ceeeeeeeeeeee......
+            .....feeeeeeeeeeee......
+            .....cceeeeeeeeeee......
+            ......feeeeeeeeeee......
+            .....6fceeeeeeeeee6.....
+            ....6776eeeeeeeee676....
+            ...6777666eeee6666776...
+            ..67768e67766777667776..
+            ...668ee7768867788666...
+            ......ee77eeee77ecee....
+            ......ee6eeeeee6eef.....
+            ......eeeeeeeeeeeef.....
+            ......eeeeeeeeeeeef.....
+            ......eeeeeeeeeeecf.....
+            ......ceeeeeeeeeecf.....
+            ......ceeeeeeeeeeff.....
+            ......feeeeeeeeeefe.....
+            .....6feeeeeeeeeef6.....
+            ....6776eeeeeeeee676....
+            ...6777666eeee6667776...
+            ..6776ee67777777667776..
+            ...668ee7768867788666...
+            ......ee77eeee67ee......
+            ......ee6eeeeee6ce......
+            ......eefeeeeeeece......
+            ......eeceeeeeeece......
+            ......eeceeeeeeefe......
+            ......eeceeeeeeefe......
+            ......eeeeeeeeeefe......
+            ......eeeeeeeeeece......
+            .....6eeeeeeeeeece6.....
+            ....6776eeeeeeeee676....
+            ...6776666eeee6766776...
+            ..6776ee77777777667776..
+            ...668ce7768867788666...
+            ......ce77eeee67ee......
+            ......ce6eeeeee6ee......
+            ......ceeeeeeeeeee......
+            ......fcceeeeeecee......
+            ......fccceeececce......
+            ......fcceeecceccc......
+            ......fccceecceccc......
+            ......fccccceceecc......
+            .....6fccccccccccf6.....
+            ....6776ccccccccc676....
+            ...6776676cccc6766776...
+            ..6776cc77777777667776..
+            ...668cc7768867788666...
+            ......cc77cccc67cf......
+            ......cc6cccccc6cf......
+            `, SpriteKind.blockade)
+        tiles.placeOnTile(trigger, value17)
+        tiles.setTileAt(value17, assets.tile`tile0`)
+    }
+    initTexts()
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteG, function (sprite, otherSprite) {
-    music.playTone(392, music.beat(BeatFraction.Whole))
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text5, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Major 6th?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteE, function (sprite, otherSprite) {
-    music.playTone(330, music.beat(BeatFraction.Whole))
+    music.stopAllSounds()
+    music.playTone(330, music.beat(BeatFraction.Breve))
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile2`, function (sprite, location) {
     current_level += 1
+    trigger.destroy(effects.spray, 500)
     startLevel()
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteB, function (sprite, otherSprite) {
-    music.playTone(494, music.beat(BeatFraction.Whole))
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.coral0, function (sprite, location) {
+    Hops_and_Paw.sayText("Here we go! Have fun!", 1000, false)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text3, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Perfect 4th?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Flower, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -492,90 +879,35 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Flower, function (sprite, otherS
     bee.follow(Hops_and_Paw, 30)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteF, function (sprite, otherSprite) {
-    music.playTone(349, music.beat(BeatFraction.Whole))
+    music.stopAllSounds()
+    music.playTone(349, music.beat(BeatFraction.Breve))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Fireball, function (sprite, otherSprite) {
     info.changeLifeBy(-2)
     otherSprite.destroy()
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.noteA, function (sprite, otherSprite) {
-    music.playTone(440, music.beat(BeatFraction.Whole))
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteD, function (sprite, otherSprite) {
-    music.playTone(294, music.beat(BeatFraction.Whole))
+    music.stopAllSounds()
+    music.playTone(294, music.beat(BeatFraction.Breve))
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
     music.stopAllSounds()
-    music.siren.play()
-    bee = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
-    animation.runImageAnimation(
-    bee,
-    [img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . f 1 1 1 f 1 1 1 f . . . . 
-        . . . . . 1 1 1 1 1 . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . f f 5 5 f 5 5 f f . . . . 
-        . . . f 5 5 5 f 5 5 5 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        `],
-    100,
-    true
-    )
-    bee.setPosition(Hops_and_Paw.x + 80, Hops_and_Paw.y - 80)
-    bee.follow(Hops_and_Paw, 30)
-    Hops_and_Paw.sayText("\"Wrong Interval!\"", 200, true)
+    music.baDing.play()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.text2, function (sprite, otherSprite) {
+    Hops_and_Paw.sayText("Which note represents a Major 3rd?", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Trigger, function (sprite, otherSprite) {
-    music.playTone(262, music.beat(BeatFraction.Whole))
-    Hops_and_Paw.sayText("Placeholder Text", 2000, true)
+    music.stopAllSounds()
+    music.playTone(262, music.beat(BeatFraction.Breve))
 })
 function startLevel () {
     if (current_level == 0) {
         tiles.setTilemap(tilemap`level2`)
+        game.showLongText("Welcome to the Meow Meow Game!", DialogLayout.Bottom)
+        game.showLongText("In this game you will learn how to identify musical intervals!", DialogLayout.Bottom)
     } else if (current_level == 1) {
         scene.setBackgroundColor(3)
         scene.setBackgroundImage(img`
@@ -826,8 +1158,6 @@ function startLevel () {
             1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
             `)
         tiles.setTilemap(tilemap`level4`)
-    } else if (current_level == 3) {
-        tiles.setTilemap(tilemap`level2`)
     } else {
         game.over(true)
     }
@@ -846,8 +1176,45 @@ function startLevel () {
     for (let value4 of sprites.allOfKind(SpriteKind.Flower)) {
         value4.destroy()
     }
+    for (let value7 of sprites.allOfKind(SpriteKind.Trigger)) {
+        value7.destroy()
+    }
+    for (let value8 of sprites.allOfKind(SpriteKind.Fireball)) {
+        value8.destroy()
+    }
+    for (let value9 of sprites.allOfKind(SpriteKind.NoteD)) {
+        value9.destroy()
+    }
+    for (let value10 of sprites.allOfKind(SpriteKind.NoteE)) {
+        value10.destroy()
+    }
+    for (let value11 of sprites.allOfKind(SpriteKind.NoteF)) {
+        value11.destroy()
+    }
+    for (let value12 of sprites.allOfKind(SpriteKind.NoteG)) {
+        value12.destroy()
+    }
+    for (let value13 of sprites.allOfKind(SpriteKind.NoteA)) {
+        value13.destroy()
+    }
+    for (let value14 of sprites.allOfKind(SpriteKind.NoteB)) {
+        value14.destroy()
+    }
     initLevels()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Prompt, function (sprite, otherSprite) {
+    game.showLongText("You will be played a reference note, and given an interval.", DialogLayout.Bottom)
+    game.showLongText("To progress, you need to choose the correct interval.", DialogLayout.Bottom)
+    otherSprite.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NoteG, function (sprite, otherSprite) {
+    music.stopAllSounds()
+    music.playTone(392, music.beat(BeatFraction.Breve))
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.EndPrompt, function (sprite, otherSprite) {
+    game.showLongText("If you hit the wrong interval, bees will start flying at you and you will die. Do try it out!", DialogLayout.Bottom)
+    otherSprite.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     if (Hops_and_Paw.y < otherSprite.y) {
@@ -856,10 +1223,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         info.changeLifeBy(-1)
     }
 })
-let bee: Sprite = null
 let fireball: Sprite = null
-let trigger: Sprite = null
 let flower: Sprite = null
+let bee: Sprite = null
+let trigger: Sprite = null
 let Hops_and_Paw: Sprite = null
 let current_level = 0
 scene.setBackgroundColor(9)
@@ -1112,5 +1479,15 @@ game.onUpdate(function () {
     if (Hops_and_Paw.vx < 0 || Hops_and_Paw.isHittingTile(CollisionDirection.Left)) {
         Hops_and_Paw.image.flipX()
         Hops_and_Paw.setImage(Hops_and_Paw.image)
+    }
+    if (Hops_and_Paw.tileKindAt(TileDirection.Top, assets.tile`myTile10`)) {
+        music.stopAllSounds()
+        music.baDing.play()
+        Hops_and_Paw.sayText("Correct!", 500, false)
+        for (let value17 of sprites.allOfKind(SpriteKind.blockade)) {
+            value17.destroy(effects.spray, 200)
+        }
+    } else if (Hops_and_Paw.tileKindAt(TileDirection.Top, assets.tile`myTile6`)) {
+        wrongNote()
     }
 })
