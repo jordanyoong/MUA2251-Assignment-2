@@ -1033,6 +1033,7 @@ function startLevel () {
             3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
             `)
         tiles.setTilemap(tilemap`level3`)
+        game.showLongText("Level 2: Intermediate", DialogLayout.Bottom)
     } else if (current_level == 2) {
         scene.setBackgroundColor(5)
         scene.setBackgroundImage(img`
@@ -1158,6 +1159,7 @@ function startLevel () {
             1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
             `)
         tiles.setTilemap(tilemap`level4`)
+        game.showLongText("Level 3: Hard", DialogLayout.Bottom)
     } else {
         game.over(true)
     }
