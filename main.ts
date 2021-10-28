@@ -906,7 +906,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Trigger, function (sprite, other
 function startLevel () {
     if (current_level == 0) {
         tiles.setTilemap(tilemap`level2`)
-        game.showLongText("Welcome to the Meow Meow Game!", DialogLayout.Bottom)
+        game.showLongText("Welcome to the Meow Meow Music Game!", DialogLayout.Bottom)
         game.showLongText("In this game you will learn how to identify musical intervals!", DialogLayout.Bottom)
     } else if (current_level == 1) {
         scene.setBackgroundColor(3)
