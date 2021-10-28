@@ -66,7 +66,7 @@ function initTexts () {
         tiles.placeOnTile(trigger, t1)
         tiles.setTileAt(t1, assets.tile`tile0`)
     }
-    for (let t1 of tiles.getTilesByType(assets.tile`myTile15`)) {
+    for (let t12 of tiles.getTilesByType(assets.tile`myTile15`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -85,10 +85,10 @@ function initTexts () {
             . c c c c c c c c c c c c c c . 
             . c c c c c c c c c c c c c c . 
             `, SpriteKind.text2)
-        tiles.placeOnTile(trigger, t1)
-        tiles.setTileAt(t1, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, t12)
+        tiles.setTileAt(t12, assets.tile`tile0`)
     }
-    for (let t1 of tiles.getTilesByType(assets.tile`myTile16`)) {
+    for (let t13 of tiles.getTilesByType(assets.tile`myTile16`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -107,10 +107,10 @@ function initTexts () {
             . a a a a a a a a a a a a a a . 
             . a a a a a a a a a a a a a a . 
             `, SpriteKind.text3)
-        tiles.placeOnTile(trigger, t1)
-        tiles.setTileAt(t1, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, t13)
+        tiles.setTileAt(t13, assets.tile`tile0`)
     }
-    for (let t1 of tiles.getTilesByType(assets.tile`myTile17`)) {
+    for (let t14 of tiles.getTilesByType(assets.tile`myTile17`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -129,10 +129,10 @@ function initTexts () {
             . b b b b b b b b b b b b b b . 
             . b b b b b b b b b b b b b b . 
             `, SpriteKind.text4)
-        tiles.placeOnTile(trigger, t1)
-        tiles.setTileAt(t1, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, t14)
+        tiles.setTileAt(t14, assets.tile`tile0`)
     }
-    for (let t1 of tiles.getTilesByType(assets.tile`myTile18`)) {
+    for (let t15 of tiles.getTilesByType(assets.tile`myTile18`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -151,10 +151,10 @@ function initTexts () {
             . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
             . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
             `, SpriteKind.text5)
-        tiles.placeOnTile(trigger, t1)
-        tiles.setTileAt(t1, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, t15)
+        tiles.setTileAt(t15, assets.tile`tile0`)
     }
-    for (let t1 of tiles.getTilesByType(assets.tile`myTile19`)) {
+    for (let t16 of tiles.getTilesByType(assets.tile`myTile19`)) {
         trigger = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -173,8 +173,8 @@ function initTexts () {
             . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
             . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 . 
             `, SpriteKind.text6)
-        tiles.placeOnTile(trigger, t1)
-        tiles.setTileAt(t1, assets.tile`tile0`)
+        tiles.placeOnTile(trigger, t16)
+        tiles.setTileAt(t16, assets.tile`tile0`)
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.text6, function (sprite, otherSprite) {
@@ -1176,29 +1176,44 @@ function startLevel () {
     for (let value4 of sprites.allOfKind(SpriteKind.Flower)) {
         value4.destroy()
     }
-    for (let value7 of sprites.allOfKind(SpriteKind.Trigger)) {
-        value7.destroy()
+    for (let value72 of sprites.allOfKind(SpriteKind.Trigger)) {
+        value72.destroy()
     }
-    for (let value8 of sprites.allOfKind(SpriteKind.Fireball)) {
-        value8.destroy()
+    for (let value82 of sprites.allOfKind(SpriteKind.Fireball)) {
+        value82.destroy()
     }
-    for (let value9 of sprites.allOfKind(SpriteKind.NoteD)) {
-        value9.destroy()
+    for (let value92 of sprites.allOfKind(SpriteKind.NoteD)) {
+        value92.destroy()
     }
-    for (let value10 of sprites.allOfKind(SpriteKind.NoteE)) {
-        value10.destroy()
+    for (let value102 of sprites.allOfKind(SpriteKind.NoteE)) {
+        value102.destroy()
     }
-    for (let value11 of sprites.allOfKind(SpriteKind.NoteF)) {
-        value11.destroy()
+    for (let value112 of sprites.allOfKind(SpriteKind.NoteF)) {
+        value112.destroy()
     }
-    for (let value12 of sprites.allOfKind(SpriteKind.NoteG)) {
-        value12.destroy()
+    for (let value122 of sprites.allOfKind(SpriteKind.NoteG)) {
+        value122.destroy()
     }
-    for (let value13 of sprites.allOfKind(SpriteKind.NoteA)) {
-        value13.destroy()
+    for (let value132 of sprites.allOfKind(SpriteKind.NoteA)) {
+        value132.destroy()
     }
-    for (let value14 of sprites.allOfKind(SpriteKind.NoteB)) {
-        value14.destroy()
+    for (let value142 of sprites.allOfKind(SpriteKind.NoteB)) {
+        value142.destroy()
+    }
+    for (let t1 of sprites.allOfKind(SpriteKind.text1)) {
+        t1.destroy()
+    }
+    for (let t12 of sprites.allOfKind(SpriteKind.text2)) {
+        t12.destroy()
+    }
+    for (let t13 of sprites.allOfKind(SpriteKind.text3)) {
+        t13.destroy()
+    }
+    for (let t14 of sprites.allOfKind(SpriteKind.text4)) {
+        t14.destroy()
+    }
+    for (let t15 of sprites.allOfKind(SpriteKind.text5)) {
+        t15.destroy()
     }
     initLevels()
 }
@@ -1484,8 +1499,8 @@ game.onUpdate(function () {
         music.stopAllSounds()
         music.baDing.play()
         Hops_and_Paw.sayText("Correct!", 500, false)
-        for (let value17 of sprites.allOfKind(SpriteKind.blockade)) {
-            value17.destroy(effects.spray, 200)
+        for (let value172 of sprites.allOfKind(SpriteKind.blockade)) {
+            value172.destroy(effects.spray, 200)
         }
     } else if (Hops_and_Paw.tileKindAt(TileDirection.Top, assets.tile`myTile6`)) {
         wrongNote()
